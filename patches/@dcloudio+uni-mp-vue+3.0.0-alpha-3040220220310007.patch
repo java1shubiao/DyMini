@@ -1,0 +1,56 @@
+diff --git a/node_modules/@dcloudio/uni-mp-vue/dist/vue.runtime.esm.js b/node_modules/@dcloudio/uni-mp-vue/dist/vue.runtime.esm.js
+index 3cd02c2..e66629f 100644
+--- a/node_modules/@dcloudio/uni-mp-vue/dist/vue.runtime.esm.js
++++ b/node_modules/@dcloudio/uni-mp-vue/dist/vue.runtime.esm.js
+@@ -1768,26 +1768,31 @@ function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot // false on
+ function markAttrsAccessed() {
+ }
+ 
+-function provide(key, value) {
+-    if (!currentInstance) {
+-        if ((process.env.NODE_ENV !== 'production')) {
+-            warn$1(`provide() can only be used inside setup().`);
+-        }
+-    }
+-    else {
+-        let provides = currentInstance.provides;
+-        // by default an instance inherits its parent's provides object
+-        // but when it needs to provide values of its own, it creates its
+-        // own provides object using parent provides object as prototype.
+-        // this way in `inject` we can simply look up injections from direct
+-        // parent and let the prototype chain do the work.
+-        const parentProvides = currentInstance.parent && currentInstance.parent.provides;
+-        if (parentProvides === provides) {
+-            provides = currentInstance.provides = Object.create(parentProvides);
+-        }
+-        // TS doesn't allow symbol as index type
+-        provides[key] = value;
+-    }
++// TODO 暂时扩展provide, 允许往根节点上挂载
++// * 字节小程序确定父子关系滞后, 在setup中子结点inject时, 无法确定自己的父节点, 获取不到provides, 因此将扩展此处, 直接向根节点扩展
++function provide(key, value, isProvideRoot = false) {
++  if (!currentInstance) {
++      if ((process.env.NODE_ENV !== 'production')) {
++          warn$1(`provide() can only be used inside setup().`);
++      }
++  }
++  else {
++      let provides = currentInstance.provides;
++      // by default an instance inherits its parent's provides object
++      // but when it needs to provide values of its own, it creates its
++      // own provides object using parent provides object as prototype.
++      // this way in `inject` we can simply look up injections from direct
++      // parent and let the prototype chain do the work.
++      const parentProvides = currentInstance.parent && currentInstance.parent.provides;
++      if (parentProvides === provides) {
++          provides = currentInstance.provides = Object.create(parentProvides);
++      }
++      // TS doesn't allow symbol as index type
++      provides[key] = value;
++      if (isProvideRoot) {
++        currentInstance.vnode.appContext.provides = {...currentInstance.vnode.appContext.provides, ...provides}
++      }
++  }
+ }
+ function inject(key, defaultValue, treatDefaultAsFactory = false) {
+     // fallback to `currentRenderingInstance` so that this can be called in

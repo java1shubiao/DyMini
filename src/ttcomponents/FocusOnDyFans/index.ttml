@@ -1,0 +1,10 @@
+<view class="{{componentType? 'aweme-button': 'aweme-text'}}" bind:tap="handleClickBtn">
+{{componentType ? '抖音主页' : '关注'}}
+<aweme-data
+  aweme-id="{{awemeId}}"
+  default-nickname="自定义昵称"
+  default-text="自定义昵称"
+  class="{{componentType ? 'domain' : 'spec-domain'}}"  
+/>
+
+</view>

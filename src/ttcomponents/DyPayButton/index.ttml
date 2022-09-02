@@ -1,0 +1,18 @@
+<pay-button
+  class="{{customClass}}"
+  mode="{{mode}}"
+  goods-id="{{goodsId}}"
+  goods-type="{{goodsType}}"
+  order-status="{{orderStatus}}"
+  order-id="{{orderId}}"
+  refund-id="{{refundId}}"
+  refund-total-amount="{{refundTotalAmount}}"
+  marketing-ready="{{marketingReady}}"
+  biz-line={{2}}
+  bind:getgoodsinfo="getGoodsInfo"
+  bind:placeorder="userLogin"
+  bind:error="onError"
+  bind:pay="onPay"
+  bind:applyrefund="applyRefund"
+  bind:refund="handleRefund"
+/>

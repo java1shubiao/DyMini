@@ -1,0 +1,214 @@
+{
+  "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "小鹅通微店",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 500,
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/study/index",
+      "style": {
+        "navigationBarTitleText": "小鹅通微店",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 500,
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/mine/index",
+      "style": {
+        "navigationBarTitleText": "小鹅通微店",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    }
+  ],
+  "subPackages": [{
+      "root": "pages-main-affiliate",
+      "pages": [{
+          "path": "pages/agreement-info/service-agreement-info",
+          "style": {
+            "navigationBarTitleText": "小鹅通协议",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "pages/webview-container/index",
+          "style": {
+            "navigationBarTitleText": "小鹅通",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "pages/goodsDetail/index",
+          "style": {
+            "navigationBarTitleText": "商详页",
+            "onReachBottomDistance": 400,
+            "usingComponents": {
+              "zijie-pay-button": "/ttcomponents/DyPayButton/index",
+              "focus-on-fans": "/ttcomponents/FocusOnDyFans/index"
+            }
+          }
+        },
+        {
+          "path": "pages/payCompeletepage/index",
+          "style": {
+            "navigationBarTitleText": "支付完成",
+            "usingComponents": {
+              "course-detail-button": "/ttcomponents/CourseDetailButton/index"
+            }
+          }
+        },
+        {
+          "path": "pages/shopHomePage/index",
+          "style": {
+            "navigationBarTitleText": "达人主页",
+            "navigationBarBackgroundColor": "#fff",
+            "enablePullDownRefresh": true,
+            "onReachBottomDistance": 50,
+            "navigationBarTextStyle": "black",
+            "usingComponents": {
+              "focus-on-fans": "/ttcomponents/FocusOnDyFans/index"
+            }
+          }
+        },
+        {
+          "path": "pages/comfirmOrderpage/index",
+          "style": {
+            "navigationBarTitleText": "确认订单"
+          }
+        },
+        {
+          "path": "pages/order/order-list",
+          "style": {
+            "navigationBarTitleText": "订单列表",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black",
+            "usingComponents": {
+              "zijie-pay-button": "/ttcomponents/DyPayButton/index"
+            }
+          }
+        },
+        {
+          "path": "pages/order/order-detail",
+          "style": {
+            "navigationBarTitleText": "订单详情",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black",
+            "usingComponents": {
+              "zijie-pay-button": "/ttcomponents/DyPayButton/index"
+            }
+          }
+        },
+        {
+          "path": "pages/after-sales/apply-after-sales",
+          "style": {
+            "navigationBarTitleText": "申请售后",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "pages/after-sales/after-sales-detail",
+          "style": {
+            "navigationBarTitleText": "售后详情",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "pages/searchCourse/index",
+          "style": {
+            "navigationBarTitleText": "搜索",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "pages/ErrorPage/ErrorPage",
+          "style": {
+            "navigationBarTitleText": "小鹅通微店",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTextStyle": "black"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages-assist-affiliate",
+      "pages": [{
+        "path": "pages/middle-page/index",
+        "style": {
+          "navigationBarTitleText": "",
+          "navigationBarBackgroundColor": "#fff"
+        }
+      }]
+    },
+    {
+      "root": "PagesDebugAffiliate",
+      "pages": [{
+        "path": "Pages/DebugPage/DebugPage",
+        "style": {
+          "navigationBarTitleText": "调试",
+          "navigationBarBackgroundColor": "#fff"
+        }
+      }],
+      "independent": true
+    },
+    {
+      "root": "PagesCommonProblem",
+      "pages": [{
+        "path": "Pages/CommonProblem/CommonProblem",
+        "style": {
+          "navigationBarTitleText": "常见问题",
+          "navigationBarBackgroundColor": "#fff"
+        }
+      }]
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小鹅通微店",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "selectedColor": "#1472FF",
+    "color": "#CCCCCC",
+    "borderStyle": "black",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/pages/main.png",
+        "selectedIconPath": "static/images/pages/mainChosen.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/study/index",
+        "iconPath": "static/images/pages/study.png",
+        "selectedIconPath": "static/images/pages/studyChosen.png",
+        "text": "学习"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "static/images/pages/mine.png",
+        "selectedIconPath": "static/images/pages/mineChosen.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^xe-(.*)": "@xiaoe/uni-ui/lib/xe-$1/xe-$1.vue",
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  }
+}

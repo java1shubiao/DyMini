@@ -1,0 +1,11 @@
+.btnClass {
+    width: 368rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+    opacity: 1;
+    background: rgba(20,114,255,1);
+    color: white;
+    font-size: 28rpx;
+    text-align: center;
+}

@@ -1,0 +1,65 @@
+diff --git a/node_modules/@dcloudio/uni-mp-toutiao/dist/uni.mp.esm.js b/node_modules/@dcloudio/uni-mp-toutiao/dist/uni.mp.esm.js
+index 813bc84..685b66f 100644
+--- a/node_modules/@dcloudio/uni-mp-toutiao/dist/uni.mp.esm.js
++++ b/node_modules/@dcloudio/uni-mp-toutiao/dist/uni.mp.esm.js
+@@ -892,7 +892,7 @@ function initTriggerEvent(mpInstance) {
+     };
+ }
+ function initHook(name, options, isComponent) {
+-    if (isComponent) {
++    if (isComponent && options.lifetimes && options.lifetimes[name]) {
+         // fix by Lxh 字节自定义组件Component构造器文档上写有created，但是实测只触发了lifetimes上的created
+         options = options.lifetimes;
+     }
+@@ -924,26 +924,31 @@ Component = function (options) {
+     return MPComponent(options);
+ };
+ 
+-function provide(instance, key, value) {
+-    if (!instance) {
+-        if ((process.env.NODE_ENV !== 'production')) {
+-            console.warn(`provide() can only be used inside setup().`);
+-        }
+-    }
+-    else {
+-        let provides = instance.provides;
+-        // by default an instance inherits its parent's provides object
+-        // but when it needs to provide values of its own, it creates its
+-        // own provides object using parent provides object as prototype.
+-        // this way in `inject` we can simply look up injections from direct
+-        // parent and let the prototype chain do the work.
+-        const parentProvides = instance.parent && instance.parent.provides;
+-        if (parentProvides === provides) {
+-            provides = instance.provides = Object.create(parentProvides);
+-        }
+-        // TS doesn't allow symbol as index type
+-        provides[key] = value;
+-    }
++// TODO 暂时扩展provide, 允许往根节点上挂载
++// * 字节小程序确定父子关系滞后, 在setup中子结点inject时, 无法确定自己的父节点, 获取不到provides, 因此将扩展此处, 直接向根节点扩展
++function provide(instance, key, value, isProvideRoot = false) {
++  if (!instance) {
++      if ((process.env.NODE_ENV !== 'production')) {
++          console.warn(`provide() can only be used inside setup().`);
++      }
++  }
++  else {
++      let provides = instance.provides;
++      // by default an instance inherits its parent's provides object
++      // but when it needs to provide values of its own, it creates its
++      // own provides object using parent provides object as prototype.
++      // this way in `inject` we can simply look up injections from direct
++      // parent and let the prototype chain do the work.
++      const parentProvides = instance.parent && instance.parent.provides;
++      if (parentProvides === provides) {
++          provides = instance.provides = Object.create(parentProvides);
++      }
++      // TS doesn't allow symbol as index type
++      provides[key] = value;
++      if (isProvideRoot) {
++        instance.vnode.appContext.provides = {...instance.vnode.appContext.provides, ...provides}
++      }
++  }
+ }
+ function initProvide(instance) {
+     const provideOptions = instance.$options.provide;

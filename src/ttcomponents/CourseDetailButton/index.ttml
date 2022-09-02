@@ -1,0 +1,1 @@
+<view class="btnClass" bind:tap="subscribleMessage">进入课程</view>

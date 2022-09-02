@@ -1,0 +1,43 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+.aweme-button{
+  width: 144rpx;
+  height: 48rpx;
+  border-radius: 40rpx;
+  opacity: 1;
+  border: 0 solid rgba(151,151,151,1);
+  background-color: #FFFFFF;
+  color:#1472FF;
+  font-size:24rpx;
+  text-align:center;
+  line-height:48rpx;
+  position: relative;
+}
+.aweme-text {
+  min-width: 74rpx;
+  height: 48rpx;
+  color:#1472FF;
+  font-size:24rpx;
+  text-align:center;
+  line-height:48rpx;
+  font-size:14px;
+  font-weight: 500;
+  position: relative;
+}
+.domain{
+  opacity: 0;
+  position:absolute;
+  top:-20rpx;
+  left:20rpx
+}
+.spec-domain {
+  opacity:0;
+  position:absolute;
+  left: -17px;
+  top:-20rpx;
+}
+.toDyFans {
+  width: 200rpx;
+}
